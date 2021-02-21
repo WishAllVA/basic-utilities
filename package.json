@@ -1,6 +1,6 @@
 {
   "name": "basic-utilities",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "This package offers basic javascript array and object functionalities",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -22,6 +22,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/WishAllVA/basic-utilities.git"
+  },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
   },
   "keywords": [
     "node",
