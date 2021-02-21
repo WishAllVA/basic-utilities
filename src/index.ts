@@ -26,7 +26,7 @@ export const filterObject = (obj: object, value: string) => {
  * @param arrB Second Array
  * @param order Check Order ? 0 for no, 1 for yes
  */
-export const compareArrays = (arrA: number[], arrB: number[], order: number): Boolean => {
+export const compareArrays = (arrA: number[], arrB: number[], order: number): boolean => {
   if (+order) return JSON.stringify(arrA) === JSON.stringify(arrB);
   return JSON.stringify(arrA.sort()) === JSON.stringify(arrB.sort());
 };
