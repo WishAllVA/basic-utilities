@@ -53,22 +53,6 @@ export const flattenObject = (obj: object) => {
 };
 
 /**
- * 
- * @param object Object which has to be deep freezed
- * @returns A deep freezed object
- */
-export const deepFreeze = (object: object) => {
-  Object
-    .entries(object)
-    .forEach(([name, value]) => {
-      if (value && typeof value === 'object') {
-        deepFreeze(value);
-      }
-    });
-  return Object.freeze(object);
-}
-
-/**
  *
  * @param col Column name of excel file
  */
@@ -81,14 +65,3 @@ export const getIndexOfExcelColumn = (col: string) =>
  */
 export const invertObject = (obj: object) =>
   Object.keys(obj).reduce((res, k) => Object.assign(res, { [obj[k]]: k }), {});
-
-
-/**
- * 
- * @param obj The object which has to be converted to map
- * @returns The map which was created after conversion of object
- */
-export const convertObjectToMap = (obj: object) => {
-  const map = new Map(Object.entries(obj));
-  return map
-}
