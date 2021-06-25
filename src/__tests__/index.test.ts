@@ -6,6 +6,8 @@ import {
   flattenObject,
   getIndexOfExcelColumn,
   invertObject,
+  deepFreeze,
+  convertObjectToMap
 } from '../index';
 test('Filter Object', () => {
   const unfilteredObject: object = { a: 'Hello', b: 'Bye' };
@@ -48,4 +50,20 @@ test('Invert Object', () => {
   const testObject: object = { a: 'Hello', c: 'Bye' };
   const invertedObj = { Hello: 'a', Bye: 'c' };
   expect(JSON.stringify(invertObject(testObject))).toBe(JSON.stringify(invertedObj));
+});
+
+test('Deep freezing the object', () => {
+  const testObject: object = { a: 'Hello', c: 'Bye' };
+  const deepFreezedObj = deepFreeze(testObject);
+  const t = () => {
+    deepFreezedObj['a'] = 'Change'
+  }
+  expect(t).toThrowError(TypeError);
+});
+
+test('Map Conversion', () => {
+  const testObject: object = { a: 'Hello', c: 'Bye' };
+  const map = convertObjectToMap(testObject);
+  expect(map.get('a')).toBe('Hello');
+  expect(map.get('c')).toBe('Bye');
 });
